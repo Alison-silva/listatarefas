@@ -9,7 +9,6 @@ public class ListatarefasApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ListatarefasApplication.class, args);
 		
-		//Teste
 	}
 
 }
