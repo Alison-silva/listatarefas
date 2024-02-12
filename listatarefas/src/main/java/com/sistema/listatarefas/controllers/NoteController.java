@@ -99,5 +99,23 @@ public class NoteController {
 		modelAndView.addObject("notes", note);
 		return modelAndView;
 	}
+	
+	
+	public ModelAndView deleteNote(@PathVariable("id") Long id) {
+		
+		return null;
+	}
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
