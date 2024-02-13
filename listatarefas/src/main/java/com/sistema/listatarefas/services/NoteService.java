@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import com.sistema.listatarefas.model.Note;
@@ -16,6 +17,9 @@ public class NoteService {
 
 	@Autowired
 	private NoteRepository noteRepository;
+
+	@Autowired
+	private JdbcTemplate jdbcTemplate;
 
 	public Note save(Note note) {
 		return noteRepository.save(note);
@@ -36,4 +40,10 @@ public class NoteService {
 	public Optional<Note> findNoteById(Long id) {
 		return noteRepository.findById(id);
 	}
+
+	public void completed(Long id) {
+		String sql = "begin; UPDATE notes SET finished = true WHERE id = " + id + "; commit;";
+		jdbcTemplate.execute(sql);
+	}
+
 }

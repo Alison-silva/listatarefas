@@ -100,12 +100,21 @@ public class NoteController {
 		return modelAndView;
 	}
 	
-	
+	@RequestMapping(method = RequestMethod.GET, value = "**/deletenote/{id}")
 	public ModelAndView deleteNote(@PathVariable("id") Long id) {
-		
-		return null;
+		noteService.delete(id);
+		ModelAndView modelAndView = new ModelAndView("index");
+		modelAndView.addObject("notes", noteService.listNote(PageRequest.of(0, 5)));
+		return modelAndView;
 	}
 	
+	@RequestMapping(method = RequestMethod.GET, value = "**/ntcomplet/{id}")
+	public ModelAndView getNtComplet(@PathVariable("id") Long id) {
+		ModelAndView modelAndView = new ModelAndView("index");
+		noteService.completed(id);
+		modelAndView.addObject("notes", noteService.listNote(PageRequest.of(0, 5)));
+		return modelAndView;
+	}
 
 }
 
