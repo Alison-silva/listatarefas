@@ -46,7 +46,8 @@
 					<div class="form-group col-md-6">
 						<ol class="breadcrumb"
 							style="background-color: white; font-size: 20px; padding-left: 0px;">
-							<li class="breadcrumb-item active" aria-current="page">Tarefas</li>
+							<li class="breadcrumb-item active" aria-current="page">Histórico
+								de Tarefas</li>
 						</ol>
 					</div>
 				</div>
@@ -98,16 +99,16 @@
 					th:if="${notes != null}">
 					<li class="page-item" th:if="${notes.hasPrevious()}"><a
 						class="page-link"
-						th:href="@{/notespag(page=${notes.number-1}, size=${notes.size})}">Anterior</a>
+						th:href="@{/noteshistoricpag(page=${notes.number-1}, size=${notes.size})}">Anterior</a>
 					</li>
 					<li class="page-item"
 						th:each="i: ${#numbers.sequence(0, notes.totalPages - 1)}"><a
 						class="page-link"
-						th:href="@{/notespag(page=${i}, size=${notes.size})}">[[ ${i}
-							+ 1 ]]</a></li>
+						th:href="@{/noteshistoricpag(page=${i}, size=${notes.size})}">[[
+							${i} + 1 ]]</a></li>
 					<li class="page-item" th:if="${notes.hasNext()}"><a
 						class="page-link"
-						th:href="@{/notespag(page=${notes.number+1}, size=${notes.size})}">Próximo</a>
+						th:href="@{/noteshistoricpag(page=${notes.number+1}, size=${notes.size})}">Próximo</a>
 					</li>
 				</ul>
 			</nav>

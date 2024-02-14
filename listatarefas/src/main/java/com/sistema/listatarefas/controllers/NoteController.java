@@ -39,7 +39,6 @@ public class NoteController {
 
 	@GetMapping("/notespag")
 	public ModelAndView loadPageNotes(@PageableDefault(size = 5) Pageable pageable, ModelAndView model) {
-
 		Page<Note> pageNote = noteService.listNotePage(pageable);
 		model.addObject("notes", pageNote);
 		model.setViewName("index");
@@ -99,7 +98,7 @@ public class NoteController {
 		modelAndView.addObject("notes", note);
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = "**/deletenote/{id}")
 	public ModelAndView deleteNote(@PathVariable("id") Long id) {
 		noteService.delete(id);
@@ -107,7 +106,7 @@ public class NoteController {
 		modelAndView.addObject("notes", noteService.listNote(PageRequest.of(0, 5)));
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = "**/ntcomplet/{id}")
 	public ModelAndView getNtComplet(@PathVariable("id") Long id) {
 		ModelAndView modelAndView = new ModelAndView("index");
@@ -116,15 +115,19 @@ public class NoteController {
 		return modelAndView;
 	}
 
+	@RequestMapping(method = RequestMethod.GET, value = "**/historic")
+	public ModelAndView historic() {
+		ModelAndView modelAndView = new ModelAndView("/historic");
+		modelAndView.addObject("notes", noteService.findNotesCompleted(PageRequest.of(0, 5)));
+		return modelAndView;
+	}
+
+	@GetMapping("/noteshistoricpag")
+	public ModelAndView loadPageNotesHistoric(@PageableDefault(size = 5) Pageable pageable, ModelAndView model) {
+		Page<Note> pageNote = noteService.findNotesCompletedPag(pageable);
+		model.addObject("notes", pageNote);
+		model.setViewName("/historic");
+		return model;
+	}
+
 }
-
-
-
-
-
-
-
-
-
-
-

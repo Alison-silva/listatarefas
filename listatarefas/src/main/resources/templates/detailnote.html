@@ -13,65 +13,70 @@
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <div class="container-fluid">
-	    <a class="navbar-brand" href="/">Lista de Tarefas</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="/">Home</a>
-	        </li>
-	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            Menu
-	          </a>
-	          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-	            <li><a class="dropdown-item" href="register">Registrar</a></li>
-	            <li><a class="dropdown-item" href="#">Finalizados</a></li>
-	          </ul>
-	        </li>
-	      </ul>
-	    </div>
-	  </div>
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">Lista de Tarefas</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/">Home</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Menu </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="register">Registrar</a></li>
+							<li><a class="dropdown-item" href="historic">Finalizados</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
 	</nav>
 
 	<main>
-		    <div class="container"  style="width: 60%;" th:each="note : ${notes}">
-		        <nav aria-label="breadcrumb">
-		            <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
-		                
-		            </ol>
-		        </nav>
-		        <article>
-		            <h1 class="card-title" style="font-weight: bold; margin-bottom: 20px;"><span th:text="${notes.title}" ></span></h1>
-		            <p class="card-subtitle mb-2 text-muted">
-		               Data da anotação: <span th:text="${#dates.format(notes.date_task, 'dd-MM-yyyy')}"></span>
-		                <br>
-		            </p>
-		            <p class="card-subtitle mb-2 text-muted">
-		               Prioridade: <span th:text="${notes.priority.displayValue}"></span>
-		                <br>
-		            </p>
-		            <br>
-		            
-		            <a th:href="@{ntcomplet/{id}(id=${note.id})}"><button type="submit" class="btn btn-success" style="margin-top: 10px;">Concluir</button></a>
-		         	<a th:href="@{editnote/{id}(id=${note.id})}"><button type="submit" class="btn btn-warning" style="margin-top: 10px;">Editar</button></a>
-		            <a th:href="@{deletenote/{id}(id=${note.id})}"><button type="submit" class="btn btn-danger" style="margin-top: 10px;">Excluir</button></a>
-		            
-		            <br>
-		            <br>
-		            <br>
-		            <p>Texto da Nota</p>
-		            <section>
-		                <p class="card-text" style="margin-top: 40px;"><span th:utext="${notes.notes}" ></span></p>
-		            </section>
-		        </article>
-		    </div>
-		  </main>
+		<div class="container" style="width: 60%;" th:each="note : ${notes}">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb"
+					style="background-color: white; padding-left: 0px;">
 
+				</ol>
+			</nav>
+			<article>
+				<h1 class="card-title"
+					style="font-weight: bold; margin-bottom: 20px;">
+					<span th:text="${notes.title}"></span>
+				</h1>
+				<p class="card-subtitle mb-2 text-muted">
+					Data da anotação: <span
+						th:text="${#dates.format(notes.date_task, 'dd-MM-yyyy')}"></span>
+					<br>
+				</p>
+				<p class="card-subtitle mb-2 text-muted">
+					Prioridade: <span th:text="${notes.priority.displayValue}"></span>
+					<br>
+				</p>
+				<br> <a th:href="@{ntcomplet/{id}(id=${note.id})}"><button
+						type="submit" class="btn btn-success" style="margin-top: 10px;">Concluir</button></a>
+				<a th:href="@{editnote/{id}(id=${note.id})}"><button
+						type="submit" class="btn btn-warning" style="margin-top: 10px;">Editar</button></a>
+				<a th:href="@{deletenote/{id}(id=${note.id})}"><button
+						type="submit" class="btn btn-danger" style="margin-top: 10px;">Excluir</button></a>
 
+				<br> <br> <br>
+				<p>Texto da Nota</p>
+				<section>
+					<p class="card-text" style="margin-top: 40px;">
+						<span th:utext="${notes.notes}"></span>
+					</p>
+				</section>
+			</article>
+		</div>
+	</main>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
@@ -79,12 +84,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-

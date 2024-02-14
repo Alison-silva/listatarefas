@@ -46,4 +46,12 @@ public class NoteService {
 		jdbcTemplate.execute(sql);
 	}
 
+	public Page<Note> findNotesCompleted(Pageable pageable) {
+		return noteRepository.findNotesComplet(pageable);
+	}
+
+	public Page<Note> findNotesCompletedPag(Pageable pageable) {
+		return noteRepository.findNotesCompletPag(pageable);
+	}
+
 }

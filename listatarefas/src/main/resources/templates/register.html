@@ -13,28 +13,29 @@
 
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-	  <div class="container-fluid">
-	    <a class="navbar-brand" href="/">Lista de Tarefas</a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-	      <span class="navbar-toggler-icon"></span>
-	    </button>
-	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-	        <li class="nav-item">
-	          <a class="nav-link active" aria-current="page" href="/">Home</a>
-	        </li>
-	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            Menu
-	          </a>
-	          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-	            <li><a class="dropdown-item" href="register">Registrar</a></li>
-	            <li><a class="dropdown-item" href="#">Finalizados</a></li>
-	          </ul>
-	        </li>
-	      </ul>
-	    </div>
-	  </div>
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">Lista de Tarefas</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item"><a class="nav-link active"
+						aria-current="page" href="/">Home</a></li>
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+						role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Menu </a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="register">Registrar</a></li>
+							<li><a class="dropdown-item" href="historic">Finalizados</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</div>
 	</nav>
 
 	<section>
@@ -45,7 +46,8 @@
 					<div class="form-group col-md-6">
 						<ol class="breadcrumb"
 							style="background-color: white; font-size: 20px; padding-left: 0px;">
-							<li class="breadcrumb-item active" aria-current="page">Registre uma tarefa:</li>
+							<li class="breadcrumb-item active" aria-current="page">Registre
+								uma tarefa:</li>
 						</ol>
 					</div>
 				</div>
@@ -58,33 +60,31 @@
 			<div>
 				<form method="post" th:object="${noteobj}" action="savenotes">
 
-						<div class="alert alert-danger alert-dismissible" role="alert" th:each = "m : ${msg}">
-							<span th:text="${m}"></span>
-						</div>
-				
-			
-						<div class="alert alert-success alert-dismissible" role="alert" th:each = "m : ${msgok}">
-							<span th:text="${m}"></span>
-						</div>
-
+					<div class="alert alert-danger alert-dismissible" role="alert"
+						th:each="m : ${msg}">
+						<span th:text="${m}"></span>
+					</div>
+					<div class="alert alert-success alert-dismissible" role="alert"
+						th:each="m : ${msgok}">
+						<span th:text="${m}"></span>
+					</div>
 					<div class="form-group mb-3">
-						<input type="text" class="form-control" name="id" id="id" th:field="*{id}"
-							 readonly="readonly" hidden="true">
+						<input type="text" class="form-control" name="id" id="id"
+							th:field="*{id}" readonly="readonly" hidden="true">
 					</div>
 
 					<div class="form-group mb-3">
-						<input type="text" class="form-control validate" name="title" th:field="*{title}"
-							id="title" placeholder="Título *">
+						<input type="text" class="form-control validate" name="title"
+							th:field="*{title}" id="title" placeholder="Título *">
 					</div>
 					<br>
-					
 					<div class="form-group mb-3">
-						<select class="form-select form-select-lg mb-3 validate" th:field="*{priority}"
-							id="priority">
+						<select class="form-select form-select-lg mb-3 validate"
+							th:field="*{priority}" id="priority">
 							<option value="" hidden>Prioridade</option>
-							<option th:each="p : ${T(com.sistema.listatarefas.model.enuns.Priority).values()}"
-							  		  th:value="${p}"
-							  		  th:text="${p.displayValue}" ></option>
+							<option
+								th:each="p : ${T(com.sistema.listatarefas.model.enuns.Priority).values()}"
+								th:value="${p}" th:text="${p.displayValue}"></option>
 						</select>
 					</div>
 
@@ -96,13 +96,10 @@
 					</div>
 					<button type="submit" class="btn btn-primary"
 						style="margin-top: 10px;">Registrar</button>
-
 				</form>
-
 			</div>
 		</div>
 	</section>
-
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
@@ -111,12 +108,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
